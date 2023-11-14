@@ -19,6 +19,7 @@ spec:
       {{- end }}
       labels:
         {{- include "parks-app.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/part-of: parks
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -45,6 +46,9 @@ spec:
             httpGet:
               path: /
               port: http
+          envFrom:
+            - configMapRef:
+                name: parks-config
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
