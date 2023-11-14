@@ -1,0 +1,13 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: parks-app
+  namespace: parks-app
+spec:
+  to:
+    kind: Service
+    name:  {{ include "parks-app.fullname" . }}
+    weight: 100
+  port:
+    targetPort: http
+  wildcardPolicy: None
