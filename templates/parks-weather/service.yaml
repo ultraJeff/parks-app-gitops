@@ -21,5 +21,4 @@ spec:
   type: ClusterIP
   sessionAffinity: None
   selector:
-    app: parks-weather
-    deployment: parks-weather
+    app.kubernetes.io/name: parks-weather

@@ -15,13 +15,14 @@ metadata:
 spec:
   selector:
     matchLabels:
+      app.kubernetes.io/name: parks-weather
       name: parks-weather
   replicas: 1
   template:
     metadata:
       labels:
         name: parks-weather
-        quarkus-prometheus: "true"
+        app.kubernetes.io/name: parks-weather
     spec:
       containers:
         - name: parks-weather
