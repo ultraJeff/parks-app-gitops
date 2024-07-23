@@ -1,0 +1,8 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ include "parks-app.fullname" . }}
+data:
+  KAFKA_CLUSTER: 'kafka-kafka-bootstrap.openshift-operators.svc:9092'
+  PARKS_ENDPOINT: parks-app-git.a-project.svc.cluster.local
+  WEATHER_ENDPOINT: parks-weather-git.a-project.svc.cluster.local
