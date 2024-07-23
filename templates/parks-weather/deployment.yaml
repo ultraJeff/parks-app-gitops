@@ -38,7 +38,7 @@ spec:
           envFrom:
           - configMapRef:
               name: {{ .Values.configMap.name }}
-          image: quay.io/ultraJeff/parks-weather:latest
+          image: quay.io/jefrankl/parks-weather:latest
           imagePullPolicy: Always
           ports:
           - containerPort: 8080
