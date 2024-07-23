@@ -1,0 +1,23 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: parks-weather
+  labels:
+    app: parks-weather
+    app.kubernetes.io/component: parks-weather
+    app.kubernetes.io/instance: parks-weather
+    app.kubernetes.io/name: parks-weather
+    app.kubernetes.io/part-of: parks
+    app.openshift.io/runtime: java
+    app.openshift.io/runtime-version: openjdk-17-ubi8
+spec:
+  to:
+    kind: Service
+    name: parks-weather
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None

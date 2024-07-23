@@ -1,0 +1,37 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: parks-weather
+  labels:
+    app: parks-weather
+    app.kubernetes.io/component: parks-weather
+    app.kubernetes.io/instance: parks-weather
+    app.kubernetes.io/name: parks-weather
+    app.kubernetes.io/part-of: parks
+    app.openshift.io/runtime: java
+    app.openshift.io/runtime-version: openjdk-17-ubi8
+  annotations:
+    app.openshift.io/vcs-ref: main
+    app.openshift.io/vcs-uri: 'https://github.com/ultraJeff/parks-weather'
+spec:
+  clusterIP: 172.30.188.43
+  ipFamilies:
+    - IPv4
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+    - name: 8443-tcp
+      protocol: TCP
+      port: 8443
+      targetPort: 8443
+  internalTrafficPolicy: Cluster
+  clusterIPs:
+    - 172.30.188.43
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app: parks-weather
+    deployment: parks-weather

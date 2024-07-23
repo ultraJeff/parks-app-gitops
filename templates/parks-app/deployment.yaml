@@ -48,7 +48,7 @@ spec:
               port: http
           envFrom:
             - configMapRef:
-                name: {{ include "parks-app.fullname" . }}
+                name: {{ .Values.configMap.name }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

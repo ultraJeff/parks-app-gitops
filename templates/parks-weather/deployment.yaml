@@ -1,0 +1,125 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: parks-weather
+  annotations:
+    app.openshift.io/connects-to: parks-app
+    app.openshift.io/vcs-ref: main
+    app.openshift.io/vcs-uri: 'https://github.com/ultraJeff/parks-weather'
+  labels:
+    app: parks-weather
+    app.kubernetes.io/name: parks-weather
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/instance: parks-weather
+    app.openshift.io/runtime: quarkus
+    app.kubernetes.io/part-of: parks
+spec:
+  selector:
+    matchLabels:
+      name: parks-weather
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: parks-weather
+        quarkus-prometheus: "true"
+    spec:
+      containers:
+        - name: parks-weather
+        #   env:
+            # - name: QUARKUS_KUBERNETES_CONFIG_ENABLED
+            #   value: "true"
+            # - name: QUARKUS_KUBERNETES_CONFIG_CONFIG_MAPS
+            #   value: server
+            # - name: JAVA_OPTIONS
+            #   value: >-
+            #     -Dquarkus.kubernetes-config.enabled=true
+            #     -Dquarkus.kubernetes-config.config-maps=server
+          envFrom:
+          - configMapRef:
+              name: {{ .Values.configMap.name }}
+          image: quay.io/ultraJeff/parks-weather:latest
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+            name: http
+          - containerPort: 8443
+            protocol: TCP
+          - containerPort: 8778
+            protocol: TCP
+          resources:
+            requests:
+              memory: "250Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+          livenessProbe:
+            httpGet:
+              path: /q/health/live
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 10
+          readinessProbe:
+              httpGet:
+                path: /q/health/ready
+                port: 8080
+                scheme: HTTP
+              timeoutSeconds: 1
+              periodSeconds: 10
+              successThreshold: 1
+              failureThreshold: 3
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+
+# kind: Deployment
+# apiVersion: apps/v1
+# metadata:
+#   name: parks-weather
+#   namespace: a-project
+#   labels:
+#     app: parks-weather
+#     app.kubernetes.io/component: parks-weather
+#     app.kubernetes.io/instance: parks-weather
+#     app.kubernetes.io/name: parks-weather
+#     app.kubernetes.io/part-of: parks
+#     app.openshift.io/runtime: java
+#     app.openshift.io/runtime-version: openjdk-17-ubi8
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: parks-weather
+#   template:
+#     metadata:
+#       labels:
+#         app: parks-weather
+#         deployment: parks-weather
+#     spec:
+#       containers:
+#         - name: parks-weather
+#           image: 'image-registry.openshift-image-registry.svc:5000/a-project/parks-weather:latest'
+#           ports:
+#             - containerPort: 8080
+#               protocol: TCP
+#             - containerPort: 8443
+#               protocol: TCP
+#           envFrom:
+#             - configMapRef:
+#                 name: {{ include "parks-app.fullname" . }}
+#           resources: {}
+#           terminationMessagePath: /dev/termination-log
+#           terminationMessagePolicy: File
+#           imagePullPolicy: Always
+#       restartPolicy: Always
+#       terminationGracePeriodSeconds: 30
+#       dnsPolicy: ClusterFirst
+#       securityContext: {}
+#       schedulerName: default-scheduler
+#   strategy:
+#     type: RollingUpdate
+#     rollingUpdate:
+#       maxUnavailable: 25%
+#       maxSurge: 25%
+#   revisionHistoryLimit: 10
+#   progressDeadlineSeconds: 600

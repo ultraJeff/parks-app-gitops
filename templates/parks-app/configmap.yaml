@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: {{ include "parks-app.fullname" . }}
+  name: {{ .Values.configMap.name }}
 data:
   KAFKA_CLUSTER: 'kafka-kafka-bootstrap.openshift-operators.svc:9092'
   PARKS_ENDPOINT: parks-app-git.a-project.svc.cluster.local
