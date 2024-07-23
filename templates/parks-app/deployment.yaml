@@ -2,7 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "parks-app.fullname" . }}
+  annotations:
+    app.openshift.io/vcs-ref: main
+    app.openshift.io/vcs-uri: 'https://github.com/ultraJeff/parks-app'
   labels:
+    app.kubernetes.io/name: {{ include "parks-app.name" . }}
     {{- include "parks-app.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
@@ -19,7 +23,6 @@ spec:
       {{- end }}
       labels:
         {{- include "parks-app.selectorLabels" . | nindent 8 }}
-        app.kubernetes.io/part-of: parks
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:

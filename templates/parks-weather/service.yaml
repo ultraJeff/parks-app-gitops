@@ -4,33 +4,21 @@ metadata:
   name: parks-weather
   labels:
     app: parks-weather
-    app.kubernetes.io/component: parks-weather
-    app.kubernetes.io/instance: parks-weather
+    app.kubernetes.io/component: event-source
     app.kubernetes.io/name: parks-weather
-    app.kubernetes.io/part-of: parks
-    app.openshift.io/runtime: java
-    app.openshift.io/runtime-version: openjdk-17-ubi8
-  annotations:
-    app.openshift.io/vcs-ref: main
-    app.openshift.io/vcs-uri: 'https://github.com/ultraJeff/parks-weather'
+    app.openshift.io/runtime: quarkus
+    {{- include "parks-app.labels" . | nindent 4 }}
 spec:
-  clusterIP: 172.30.188.43
-  ipFamilies:
-    - IPv4
   ports:
-    - name: 8080-tcp
+    - name: 8090-tcp
       protocol: TCP
-      port: 8080
-      targetPort: 8080
-    - name: 8443-tcp
-      protocol: TCP
-      port: 8443
-      targetPort: 8443
-  internalTrafficPolicy: Cluster
-  clusterIPs:
-    - 172.30.188.43
+      port: 8090
+      targetPort: 8090
+    # - name: 8443-tcp
+    #   protocol: TCP
+    #   port: 8443
+    #   targetPort: 8443
   type: ClusterIP
-  ipFamilyPolicy: SingleStack
   sessionAffinity: None
   selector:
     app: parks-weather

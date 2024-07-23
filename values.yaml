@@ -25,6 +25,8 @@ serviceAccount:
 
 podAnnotations: {}
 
+podLabels: "app.kubernetes.io/part-of: parks"
+
 podSecurityContext: {}
   # fsGroup: 2000
 

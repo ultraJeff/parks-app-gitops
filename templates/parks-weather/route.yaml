@@ -16,7 +16,7 @@ spec:
     name: parks-weather
     weight: 100
   port:
-    targetPort: 8080-tcp
+    targetPort: 8090-tcp
   tls:
     termination: edge
     insecureEdgeTerminationPolicy: Redirect
