@@ -2,16 +2,20 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: parks-app
-  namespace: a-project
 spec:
   destination:
-    namespace: a-project
+    name: ''
+    namespace: b-project
     server: 'https://kubernetes.default.svc'
-  project: default
   source:
     path: .
-    repoURL: 'https://github.com/ultraJeff/parks-app-gitops.git'
+    repoURL: 'https://github.com/ultraJeff/parks-app-gitops'
     targetRevision: main
+  sources: []
+  project: default
   syncPolicy:
     automated:
-      selfHeal: true
+      prune: true
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true
