@@ -15,7 +15,7 @@ spec:
     name: parks-dashboard
     weight: 100
   port:
-    targetPort: 8090-tcp
+    targetPort: 9000-tcp
   tls:
     termination: edge
     insecureEdgeTerminationPolicy: Redirect

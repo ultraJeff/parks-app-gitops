@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "parks-app.fullname" . }}
+  name: parks-app
   annotations:
     app.openshift.io/connects-to: parks-dashboard
     app.openshift.io/vcs-ref: main
