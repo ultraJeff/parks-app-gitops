@@ -10,14 +10,15 @@ metadata:
     {{- include "parks-app.labels" . | nindent 4 }}
 spec:
   ports:
-    - name: 8090-tcp
+    - name: 9000-tcp
       protocol: TCP
-      port: 8090
-      targetPort: 8090
-    - name: 8443-tcp
+      port: 9000
+      targetPort: 9000
+    # Does this actually work?
+    - name: 9443-tcp
       protocol: TCP
-      port: 8443
-      targetPort: 8443
+      port: 9443
+      targetPort: 9443
   type: ClusterIP
   sessionAffinity: None
   selector:
