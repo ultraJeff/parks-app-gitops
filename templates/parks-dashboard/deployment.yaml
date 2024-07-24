@@ -14,7 +14,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: parks-dashboard
+      name: parks-dashboard
       app.kubernetes.io/name: parks-dashboard
   replicas: 1
   template:
