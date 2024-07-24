@@ -1,12 +1,12 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: parks-weather
+  name: parks-dashboard
   labels:
-    app: parks-weather
-    app.kubernetes.io/component: event-source
-    app.kubernetes.io/name: parks-weather
-    app.openshift.io/runtime: quarkus
+    app: parks-dashboard
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/name: parks-dashboard
+    app.openshift.io/runtime: nodejs
     {{- include "parks-app.labels" . | nindent 4 }}
 spec:
   ports:
@@ -21,4 +21,4 @@ spec:
   type: ClusterIP
   sessionAffinity: None
   selector:
-    app.kubernetes.io/name: parks-weather
+    app.kubernetes.io/name: parks-dashboard
