@@ -5,5 +5,5 @@ metadata:
 data:
   # Need AMQ Streams / Kafka cluster up and named kafka (TODO: Add operator here)
   KAFKA_CLUSTER: kafka-kafka-bootstrap.openshift-operators.svc:9092
-  PARKS_ENDPOINT: parks-app-park-app-gitops.parks-app.svc.cluster.local
-  WEATHER_ENDPOINT: parks-weather.parks-app.svc.cluster.local
+  PARKS_ENDPOINT: parks-app-park-app-gitops.parks-app.svc.cluster.local:8080
+  WEATHER_ENDPOINT: parks-weather.parks-app.svc.cluster.local:8090
