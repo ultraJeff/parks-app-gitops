@@ -14,11 +14,6 @@ spec:
       protocol: TCP
       port: 9000
       targetPort: 9000
-    # Does this actually work?
-    - name: 9443-tcp
-      protocol: TCP
-      port: 9443
-      targetPort: 9443
   type: ClusterIP
   sessionAffinity: None
   selector:
