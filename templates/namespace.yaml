@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: parks-app
+  labels:
+    kubernetes.io/metadata.name: parks-app
+  annotations:
+    argocd.argoproj.io/sync-wave: "-99"

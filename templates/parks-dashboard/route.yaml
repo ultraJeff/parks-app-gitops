@@ -1,18 +1,18 @@
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: parks-weather
+  name: parks-dashboard
   labels:
-    app: parks-weather
-    app.kubernetes.io/component: parks-weather
-    app.kubernetes.io/name: parks-weather
+    app: parks-dashboard
+    app.kubernetes.io/component: parks-dashboard
+    app.kubernetes.io/name: parks-dashboard
     app.kubernetes.io/part-of: parks
-    app.openshift.io/runtime: java
-    app.openshift.io/runtime-version: openjdk-17-ubi8
+    app.openshift.io/runtime: nodejs
+    app.openshift.io/runtime-version: nodejs-20-ubi9
 spec:
   to:
     kind: Service
-    name: parks-weather
+    name: parks-dashboard
     weight: 100
   port:
     targetPort: 8090-tcp

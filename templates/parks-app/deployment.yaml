@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: {{ include "parks-app.fullname" . }}
   annotations:
+    app.openshift.io/connects-to: parks-dashboard
     app.openshift.io/vcs-ref: main
     app.openshift.io/vcs-uri: 'https://github.com/ultraJeff/parks-app'
   labels:
