@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1
+kind: Task
+  name: hello
+  namespace: a-project
+spec:
+  steps:
+    - args:
+        - '-c'
+        - echo Hello World
+      command:
+        - /bin/bash
+      computeResources: {}
+      image: registry.access.redhat.com/ubi8/ubi
+      name: say-hello
