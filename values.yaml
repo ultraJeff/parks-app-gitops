@@ -41,6 +41,10 @@ securityContext: {}
 configMap:
   name: parks-config
 
+endpoints:
+  parks: http://parks-app-park-app-gitops.parks-app.svc.cluster.local:8080
+  weather: http://parks-weather.parks-app.svc.cluster.local:8090
+
 kafka:
   cluster: http://kafka-kafka-bootstrap.openshift-operators.svc:9092
 

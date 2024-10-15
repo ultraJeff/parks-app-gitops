@@ -4,5 +4,5 @@ metadata:
   name: {{ .Values.configMap.name }}
 data:
   KAFKA_CLUSTER: {{ .Values.kafka.cluster }}
-  PARKS_ENDPOINT: http://parks-app-park-app-gitops.parks-app.svc.cluster.local:8080
-  WEATHER_ENDPOINT: http://parks-weather.parks-app.svc.cluster.local:8090
+  PARKS_ENDPOINT: {{ .Values.endpoints.parks }}
+  WEATHER_ENDPOINT: {{ .Values.endpoints.weather }}
