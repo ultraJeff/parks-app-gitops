@@ -3,7 +3,6 @@ apiVersion: v1
 metadata:
   name: {{ .Values.configMap.name }}
 data:
-  # Need AMQ Streams / Kafka cluster up and named kafka (TODO: Add operator here)
-  KAFKA_CLUSTER: http://kafka-kafka-bootstrap.openshift-operators.svc:9092
+  KAFKA_CLUSTER: {{ .Values.kafka.cluster }}
   PARKS_ENDPOINT: http://parks-app-park-app-gitops.parks-app.svc.cluster.local:8080
   WEATHER_ENDPOINT: http://parks-weather.parks-app.svc.cluster.local:8090
