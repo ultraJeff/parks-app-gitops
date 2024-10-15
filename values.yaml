@@ -42,7 +42,7 @@ configMap:
   name: parks-config
 
 kafka:
-  name: http://kafka-kafka-bootstrap.openshift-operators.svc:9092
+  cluster: http://kafka-kafka-bootstrap.openshift-operators.svc:9092
 
 service:
   type: ClusterIP
