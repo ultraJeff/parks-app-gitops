@@ -2,7 +2,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: local-cluster
+  # TODO: Fix this - why local-cluster? (Changed it to default for now)
+  name: default
   namespace: openshift-gitops
 spec:
   clusterResourceWhitelist:
