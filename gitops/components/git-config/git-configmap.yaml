@@ -6,4 +6,4 @@ metadata:
   namespace: openshift-gitops
 data:
   repoBase: https://github.com/ultraJeff/parks-app-gitops
-  targetRevision: main
+  targetRevision: keda
