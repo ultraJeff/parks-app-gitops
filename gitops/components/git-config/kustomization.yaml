@@ -1,0 +1,30 @@
+---
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+
+resources:
+  - git-configmap.yaml
+
+replacements:
+  - source:
+      kind: ConfigMap
+      name: git-config
+      fieldPath: data.repoBase
+    targets:
+      - select:
+          kind: Application
+          group: argoproj.io
+          labelSelector: has-git-repo-objects=true
+        fieldPaths:
+        - spec.sources.*.repoURL
+  - source:
+      kind: ConfigMap
+      name: git-config
+      fieldPath: data.targetRevision
+    targets:
+      - select:
+          kind: Application
+          group: argoproj.io
+          labelSelector: has-git-repo-objects=true
+        fieldPaths:
+        - spec.sources.*.targetRevision

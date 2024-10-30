@@ -1,0 +1,10 @@
+# Hack to add an array of values to a field that wasn't already an array
+- op: add
+  path: /spec/controller/env
+  value: []
+
+- op: add
+  path: /spec/controller/env/-
+  value:
+    name: "ARGOCD_SYNC_WAVE_DELAY"
+    value: "15"

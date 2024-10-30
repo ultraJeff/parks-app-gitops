@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  # App of apps
+  name: keda-demo
+  namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    has-git-repo-objects: "true"
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'
+  project: default
+  sources:
+    - path: gitops/applications
+      # Patched in kustomization
+      repoURL: ''
+      targetRevision: ''
+  # Ignore the changes made by the cert patching Jobs (AMQ and Apicurio)
+  # ignoreDifferences:
+  #   - kind: Certificate
+  #     jsonPointers:
+  #     - /spec/dnsNames
+  syncPolicy:
+    # syncOptions:
+    # - RespectIgnoreDifferences=true
+    automated:
+      prune: true
+      allowEmpty: true
+      selfHeal: false
