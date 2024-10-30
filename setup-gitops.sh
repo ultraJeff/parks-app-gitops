@@ -6,7 +6,7 @@ SLEEP_SECONDS=45
 echo ""
 echo "Installing GitOps Operator."
 
-oc apply -k kustomize/bootstrap/openshift-gitops-operator/operator/base
+oc apply -k kustomize/bootstrap/openshift-gitops/operator/base
 
 echo "Pause $SLEEP_SECONDS seconds for the creation of the gitops-operator..."
 sleep $SLEEP_SECONDS
