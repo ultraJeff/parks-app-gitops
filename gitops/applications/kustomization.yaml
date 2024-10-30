@@ -2,15 +2,15 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - 01-operator-custom-metrics-autoscaler
-  - 02-operator-kafka
+  - 01-operator-custom-metrics-autoscaler.yaml
+  - 02-operator-kafka.yaml
 
-  - 10-instance-custom-metrics-autoscaler
-  - 11-instance-kafka
-  
-  - 20-application-parks-weather
-  - 21-application-parks-backend
-  - 22-application-parks-dashboard
+  - 10-instance-custom-metrics-autoscaler.yaml
+  - 11-instance-kafka.yaml
+
+  - 20-application-parks-weather.yaml
+  - 21-application-parks-backend.yaml
+  - 22-application-parks-dashboard.yaml
 
 components:
   - ../components/git-config

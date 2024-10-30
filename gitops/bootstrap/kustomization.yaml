@@ -5,7 +5,7 @@ kind: Kustomization
 resources:
   - rbac.yaml
   - app-project.yaml
-  - repo.yaml
+  # - repo.yaml
   - 00-keda-demo.yaml
 
 components:
