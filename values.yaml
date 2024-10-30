@@ -42,7 +42,7 @@ configMap:
   name: parks-config
 
 endpoints:
-  parks: http://parks-app-park-app-gitops.a-test-parks-app.svc.cluster.local:8080
+  parks: http://parks-app.a-test-parks-app.svc.cluster.local:8080
   weather: http://parks-weather.a-test-parks-app.svc.cluster.local:8090
 
 kafka:
