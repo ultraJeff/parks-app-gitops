@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: parks-weather
   annotations:
-    app.openshift.io/connects-to: parks-dashboard
     app.openshift.io/vcs-ref: main
     app.openshift.io/vcs-uri: 'https://github.com/ultraJeff/parks-weather'
   labels:
@@ -26,15 +25,6 @@ spec:
     spec:
       containers:
         - name: parks-weather
-        #   env:
-            # - name: QUARKUS_KUBERNETES_CONFIG_ENABLED
-            #   value: "true"
-            # - name: QUARKUS_KUBERNETES_CONFIG_CONFIG_MAPS
-            #   value: server
-            # - name: JAVA_OPTIONS
-            #   value: >-
-            #     -Dquarkus.kubernetes-config.enabled=true
-            #     -Dquarkus.kubernetes-config.config-maps=server
           envFrom:
           - configMapRef:
               name: {{ .Values.configMap.name }}
