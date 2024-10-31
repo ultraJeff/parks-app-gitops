@@ -13,10 +13,13 @@ metadata:
 spec:
   destination:
     server: 'https://kubernetes.default.svc'
-  sources:
-    - repoURL: 'https://github.com/ultraJeff/parks-app-gitops'
-      targetRevision: 'keda'
-      path: ./
+    # TODO: Do we need to namespace this?
+    namespace: parks-app
+  source:
+    repoURL: 'https://github.com/ultraJeff/parks-app-gitops'
+    targetRevision: 'keda'
+    path: .
+  sources: []
   project: default
   syncPolicy:
     automated:
@@ -29,7 +32,7 @@ spec:
 #   name: parks-app
 # spec:
 #   destination:
-#     namespace: openshift-gitops
+#     namespace: parks-app
 #     server: 'https://kubernetes.default.svc'
 #   source:
 #     path: .
@@ -41,5 +44,5 @@ spec:
 #     automated:
 #       prune: true
 #       selfHeal: false
-#     syncOptions:
-#       - CreateNamespace=true
+#     # syncOptions:
+#     #   - CreateNamespace=true
