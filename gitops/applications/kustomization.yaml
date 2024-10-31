@@ -8,7 +8,7 @@ resources:
   - 10-instance-custom-metrics-autoscaler.yaml
   - 11-instance-kafka.yaml
 
-  - 20-application-parks.yaml
+  # - 20-application-parks.yaml
 
 components:
   - ../components/git-config
