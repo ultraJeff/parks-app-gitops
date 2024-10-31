@@ -5,10 +5,11 @@ resources:
   - 01-operator-custom-metrics-autoscaler.yaml
   - 02-operator-kafka.yaml
 
-  - 10-instance-custom-metrics-autoscaler.yaml
   - 11-instance-kafka.yaml
 
   - 20-application-parks.yaml
+  
+  - 30-instance-custom-metrics-autoscaler.yaml
 
 components:
   - ../components/git-config

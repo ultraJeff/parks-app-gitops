@@ -1,0 +1,21 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cron-scaledobject
+  namespace: parks-app
+spec:
+  scaleTargetRef:
+    name: parks-dashboard
+  minReplicaCount: 0 
+  maxReplicaCount: 2 
+  cooldownPeriod: 300
+  triggers:
+  - type: cron 
+    metadata:
+      # Time zones: https://data.iana.org/time-zones/tzdb-2021a/zone1970.tab
+      timezone: America/New_York 
+      # Min Hr DayofMo Mo DayofWk (0-6 Sun to Sat)
+      start: "0 6 * * *" 
+      # Set this to whatever you need to show
+      end: "40 15 * * *" 
+      desiredReplicas: "2" 

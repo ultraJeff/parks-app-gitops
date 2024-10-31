@@ -1,0 +1,18 @@
+# See https://docs.openshift.com/container-platform/4.17/nodes/cma/nodes-cma-autoscaling-custom-trigger.html#nodes-cma-autoscaling-custom-trigger-kafka_nodes-cma-autoscaling-custom-trigger
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: kafka-scaled-object-parks-app
+  namespace: parks-app
+spec:
+  cooldownPeriod: 30
+  maxReplicaCount: 10
+  minReplicaCount: 0
+  scaleTargetRef:
+    name: parks-app
+  triggers:
+    - metadata:
+        bootstrapServers: 'kafka-kafka-bootstrap.kafka.svc:9092'
+        consumerGroup: parks
+        topic: weather-warnings
+      type: kafka
