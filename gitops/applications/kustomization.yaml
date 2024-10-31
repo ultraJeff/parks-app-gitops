@@ -8,9 +8,7 @@ resources:
   - 10-instance-custom-metrics-autoscaler.yaml
   - 11-instance-kafka.yaml
 
-  - 20-application-parks-weather.yaml
-  - 21-application-parks-backend.yaml
-  - 22-application-parks-dashboard.yaml
+  - 20-application-parks.yaml
 
 components:
   - ../components/git-config

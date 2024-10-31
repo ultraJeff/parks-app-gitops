@@ -1,3 +1,5 @@
+# This is done via Helm in ArgoCD so just point to the root
+# It sees Chart.yaml and values.yaml and templates folder and it figure it out on its own
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -14,7 +16,7 @@ spec:
   sources:
     - repoURL: ''
       targetRevision: ''
-      path: templates/parks-weather
+      path: ./
   project: default
   syncPolicy:
     automated:
