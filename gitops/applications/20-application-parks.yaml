@@ -14,11 +14,32 @@ spec:
   destination:
     server: 'https://kubernetes.default.svc'
   sources:
-    - repoURL: ''
-      targetRevision: ''
+    - repoURL: 'https://github.com/ultraJeff/parks-app-gitops'
+      targetRevision: 'keda'
       path: ./
   project: default
   syncPolicy:
     automated:
       prune: true
       allowEmpty: true
+
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: parks-app
+# spec:
+#   destination:
+#     namespace: openshift-gitops
+#     server: 'https://kubernetes.default.svc'
+#   source:
+#     path: .
+#     repoURL: 'https://github.com/ultraJeff/parks-app-gitops'
+#     targetRevision: main
+#   sources: []
+#   project: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: false
+#     syncOptions:
+#       - CreateNamespace=true
