@@ -42,8 +42,8 @@ configMap:
   name: parks-config
 
 endpoints:
-  parks: parks-app:8080
-  weather: parks-weather:8090
+  parks: http://parks-app:8080
+  weather: http://parks-weather:8090
 
 kafka:
   cluster: http://kafka-kafka-bootstrap.kafka.svc:9092
