@@ -7,8 +7,6 @@ metadata:
     app.kubernetes.io/component: parks-dashboard
     app.kubernetes.io/name: parks-dashboard
     app.kubernetes.io/part-of: parks
-    app.openshift.io/runtime: nodejs
-    app.openshift.io/runtime-version: nodejs-20-ubi9
 spec:
   to:
     kind: Service

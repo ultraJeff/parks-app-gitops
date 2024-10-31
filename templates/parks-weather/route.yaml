@@ -7,8 +7,6 @@ metadata:
     app.kubernetes.io/component: parks-weather
     app.kubernetes.io/name: parks-weather
     app.kubernetes.io/part-of: parks
-    app.openshift.io/runtime: java
-    app.openshift.io/runtime-version: openjdk-17-ubi8
 spec:
   to:
     kind: Service
