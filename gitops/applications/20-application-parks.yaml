@@ -8,17 +8,16 @@ metadata:
   namespace: openshift-gitops
   annotations:
     argocd.argoproj.io/sync-wave: "20"
-  # TODO: Comment out this while I try to get the app to load
-  # labels:
-  #   has-git-repo-objects: "true"
+  labels:
+    has-git-repo-objects: "true"
 spec:
   destination:
     server: 'https://kubernetes.default.svc'
     # TODO: Do we need to namespace this?
     namespace: parks-app
   source:
-    repoURL: 'https://github.com/ultraJeff/parks-app-gitops'
-    targetRevision: 'keda'
+    repoURL: ''
+    targetRevision: ''
     path: .
   sources: []
   project: default
