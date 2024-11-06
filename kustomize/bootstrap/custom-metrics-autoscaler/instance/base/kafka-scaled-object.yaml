@@ -5,13 +5,16 @@ metadata:
   name: kafka-scaled-object-parks-app
   namespace: parks-app
 spec:
-  cooldownPeriod: 30
-  maxReplicaCount: 10
+  cooldownPeriod: 20
+  initialCooldownPeriod: 0
+  pollingInterval: 1
+  maxReplicaCount: 1
   minReplicaCount: 0
   scaleTargetRef:
     name: parks-app
   triggers:
     - metadata:
+        activationLagThreshold: '4'
         bootstrapServers: 'kafka-kafka-bootstrap.kafka.svc:9092'
         consumerGroup: parks
         topic: weather-warnings
