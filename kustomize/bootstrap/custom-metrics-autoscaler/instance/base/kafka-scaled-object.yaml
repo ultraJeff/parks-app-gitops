@@ -15,6 +15,7 @@ spec:
   triggers:
     - metadata:
         activationLagThreshold: '4'
+        offsetResetPolicy: earliest
         bootstrapServers: 'kafka-kafka-bootstrap.kafka.svc:9092'
         consumerGroup: parks
         topic: weather-warnings
